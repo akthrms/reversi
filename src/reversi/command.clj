@@ -1,8 +1,8 @@
 (ns reversi.command)
 
-(defn line-of-stones [stones [x-pos y-pos] [x-dir y-dir]]
-  (loop [x (+ x-pos x-dir)
-         y (+ y-pos y-dir)
+(defn line-of-stones [stones [x1 y1] [x2 y2]]
+  (loop [x (+ x1 x2)
+         y (+ y1 y2)
          collected []]
     (if-let [stone (get stones [x y])]
       (recur x
@@ -27,7 +27,7 @@
             []
             directions)))
 
-(defn put-stone [stones [position] color]
+(defn put-stone [stones position color]
   (reduce (fn [stones position] (assoc stones position color))
           stones
           (conj (reverse-targets stones position color) position)))

@@ -10,4 +10,4 @@
          (atom initial-stones))
 
 (defn reset-stones! []
-  (swap! stones initial-stones))
+  (reset! stones initial-stones))
